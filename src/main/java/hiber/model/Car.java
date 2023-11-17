@@ -10,8 +10,8 @@ public class Car {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "name")
-    private String name;
+    @Column(name = "model")
+    private String model;
 
     @Column(name = "series")
     private String series;
@@ -24,7 +24,7 @@ public class Car {
     }
 
     public Car(String name, String series) {
-        this.name = name;
+        this.model = name;
         this.series = series;
     }
 
@@ -36,12 +36,12 @@ public class Car {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getModel() {
+        return model;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setModel(String model) {
+        this.model = model;
     }
 
     public String getSeries() {
@@ -54,7 +54,7 @@ public class Car {
 
     @Override
     public String toString() {
-        return name + ' ' + series;
+        return model + " " + series;
     }
 
     @Override
@@ -64,13 +64,13 @@ public class Car {
 
         Car car = (Car) o;
 
-        if (name != null ? !name.equals(car.name) : car.name != null) return false;
+        if (model != null ? !model.equals(car.model) : car.model != null) return false;
         return series != null ? series.equals(car.series) : car.series == null;
     }
 
     @Override
     public int hashCode() {
-        int result = name != null ? name.hashCode() : 0;
+        int result = model != null ? model.hashCode() : 0;
         result = 31 * result + (series != null ? series.hashCode() : 0);
         return result;
     }

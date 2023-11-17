@@ -1,5 +1,4 @@
 package hiber.dao;
-
 import hiber.model.Car;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -10,7 +9,7 @@ import javax.persistence.TypedQuery;
 import java.util.List;
 
 @Repository
-public class CarDaoImp implements CarDao{
+public class CarDaoImp implements CarDao {
 
     @Autowired
     private SessionFactory sessionFactory;
@@ -27,15 +26,13 @@ public class CarDaoImp implements CarDao{
         return query.getResultList();
     }
 
-//    @Override
-//    @SuppressWarnings("unchecked")
-//    public Car findCar(String car_name, String car_series) {
-////        TypedQuery<Car> findCarQuery = CurrentSession.createQuery("from Car where name = :car_name and series = :car_series")
-////                .setParameter("car_name", car_name)
-////                .setParameter("car_series", car_series);
-////        List<Car> findCarList = findCarQuery.getResultList();
-////        return findCarList.get(0);
-////    }
-//        return null;
-//    }
+    @Override
+    @SuppressWarnings("unchecked")
+    public Car findCar(String car_name, String car_series) {
+        TypedQuery<Car> findCarQuery = sessionFactory.getCurrentSession().createQuery("from Car where name = :car_name and series = :car_series")
+                .setParameter("car_name", car_name)
+                .setParameter("car_series", car_series);
+        List<Car> findCarList = findCarQuery.getResultList();
+        return findCarList.get(0);
+    }
 }
